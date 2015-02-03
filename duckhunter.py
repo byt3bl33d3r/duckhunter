@@ -76,7 +76,7 @@ if __name__ == "__main__":
     
 
 	# For general keyboard commands
-	prefix = "print '''"
+	prefix = "print '''echo "
 	suffix = " | hid-keyboard /dev/hidg0 keyboard'''"
 
 	# Process input text
