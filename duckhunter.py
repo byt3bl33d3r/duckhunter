@@ -101,7 +101,7 @@ if __name__ == "__main__":
 			seconds = (Decimal(line[1]) / Decimal(1000)) % 60
 			line[1] = str(seconds)
 			line = ' '.join(line)
-			dest.write('%s%s%s\n' % (prefix, line.rstrip('\n').strip(), suffix))
+			dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), suffix))
 
 		elif line.startswith('REM'):
 			line = '#' + line.rstrip('\n').strip('REM')
@@ -127,6 +127,6 @@ if __name__ == "__main__":
 				dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), prefixoutput))
 
 		else:
-			dest.write('%s%s%s\n' % (prefix, line.rstrip('\n').strip(), suffix))
+			dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), suffix))
 
 	print "File saved to output.txt"
