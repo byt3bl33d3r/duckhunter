@@ -70,8 +70,15 @@ if __name__ == "__main__":
 	 r'F10' : 'f10',
 	 r'DELETE' : 'delete',
 	 r'INSERT' : 'insert',
+	 r'NUMLOCK' : 'numlock',
+	 r'PAGEUP' : 'pgup',
+	 r'PAGEDOWN' : 'pgdown',
+	 r'PRINTSCREEN' : 'print',
+	 r'BREAK' : 'pause',
+	 r'PAUSE' : 'pause',
+	 r'SCROLLLOCK' : 'scrolllock',
 	 r'DELAY' : 'sleep',
-	 r'DEFAULT_DELAY' : '"',
+	 r'DEFAULT_DELAY' : '"sleep', # We need to add this in between each line if it's set. For debugging
 	 r'REPEAT' : '"'}
     
 
