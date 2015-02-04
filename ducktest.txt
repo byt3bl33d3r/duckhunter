@@ -1,0 +1,16 @@
+REM This is a comment in ducky script
+REM GUI r is a windows key + r (run) or we can use WINDOWS
+GUI r
+REM String will pass any text you wish
+STRING cmd
+ENTER
+REM We can also run "sleep" by using delay. You need to use miliseconds but we convert to seconds
+DELAY 500
+REM
+STRING echo "Hello World!"
+ENTER
+REM Other keys to use are SHIFT, ALT, SPACE, F1-F12, CONTROL, ESCAPE, DOWN, UP, LEFT, RIGHT
+UP
+ENTER
+REM We can combine keys and letters
+ALT f
