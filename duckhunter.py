@@ -12,13 +12,14 @@ from decimal import Decimal #for conversion milliseconds -> seconds
 parser = argparse.ArgumentParser(description='Converts USB rubber ducky scripts to a Nethunter format', epilog="Quack Quack")
 parser.add_argument('-l', type=str, dest='layout', choices=['us', 'fr', 'de', 'es','sv', 'it', 'uk', 'ru','dk','no','pt','be'], help='Keyboard layout')
 parser.add_argument('duckyscript', help='Ducky script to convert')
+parser.add_argument('hunterscript', help='Output script')
 
 args = parser.parse_args()
 
 # Input file is argument / output file is output.txt
 infile = open(args.duckyscript)
+dest = open(args.hunterscript, 'w')
 tmpfile = open("tmp.txt", "w")
-#args.layout = sys.argv[2]
 
 def duckyRules (source):
 
@@ -70,13 +71,20 @@ if __name__ == "__main__":
 	 r'F10' : 'f10',
 	 r'DELETE' : 'delete',
 	 r'INSERT' : 'insert',
+	 r'NUMLOCK' : 'numlock',
+	 r'PAGEUP' : 'pgup',
+	 r'PAGEDOWN' : 'pgdown',
+	 r'PRINTSCREEN' : 'print',
+	 r'BREAK' : 'pause',
+	 r'PAUSE' : 'pause',
+	 r'SCROLLLOCK' : 'scrolllock',
 	 r'DELAY' : 'sleep',
-	 r'DEFAULT_DELAY' : '"',
+	 r'DEFAULT_DELAY' : '"sleep', # We need to add this in between each line if it's set. For debugging
 	 r'REPEAT' : '"'}
     
 
 	# For general keyboard commands
-	prefix = "print '''"
+	prefix = "print '''echo "
 	suffix = " | hid-keyboard /dev/hidg0 keyboard'''"
 
 	# Process input text
@@ -93,7 +101,6 @@ if __name__ == "__main__":
 		tmpfile.close()
 
 	src = open('tmp.txt', 'r')
-	dest = open('output.txt', 'w')
 	for line in src:
 
 		if line.startswith('sleep'):
@@ -129,4 +136,7 @@ if __name__ == "__main__":
 		else:
 			dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), suffix))
 
-	print "File saved to output.txt"
+	src.close()
+	dest.close()
+	os.remove("tmp.txt")
+    print "File saved to location: " + (args.hunterscript)
