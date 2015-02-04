@@ -88,8 +88,8 @@ if __name__ == "__main__":
 	suffix = " | hid-keyboard /dev/hidg0 keyboard"
 
 	# Process input text
-	prefixinput = "echo -ne "
-	prefixoutput = " > /dev/hidg0 "
+	prefixinput = 'echo -ne "'
+	prefixoutput = '" > /dev/hidg0'
 
 	with infile as text:
 		new_text = duckyRules(text.read())
