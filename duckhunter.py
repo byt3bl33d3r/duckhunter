@@ -108,7 +108,7 @@ if __name__ == "__main__":
 			seconds = (Decimal(line[1]) / Decimal(1000)) % 60
 			line[1] = str(seconds)
 			line = ' '.join(line)
-			dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), suffix))
+			dest.write('%s\n' % line.rstrip('\n').strip())
 
 		elif line.startswith('REM'):
 			line = '#' + line.rstrip('\n').strip('REM')
