@@ -81,7 +81,7 @@ if __name__ == "__main__":
 	 r'DELAY' : 'sleep',
 	 r'DEFAULT_DELAY' : '"sleep', # We need to add this in between each line if it's set. For debugging
 	 r'REPEAT' : '"'}
-    
+	
 
 	# For general keyboard commands
 	prefix = "echo "
@@ -139,4 +139,4 @@ if __name__ == "__main__":
 	src.close()
 	dest.close()
 	os.remove("tmp.txt")
-    print "File saved to location: " + (args.hunterscript)
+	print "File saved to location: " + (args.hunterscript)
