@@ -34,10 +34,10 @@ def duckyRules (source):
 if __name__ == "__main__": 
 
 	rules = { 
-	 r'ALT' : u'alt',
+	 r'ALT' : u'left-alt',
 	 r'GUI' : 'left-meta',
 	 r'WINDOWS' : 'left-meta',
-	 r'ALT' : 'alt',
+	 r'ALT' : 'left-alt',
 	 r'CONTROL' : 'left-ctrl',
 	 r'CTRL' : 'left-ctrl',
 	 r'SHIFT' : 'left-shift',
@@ -134,7 +134,7 @@ if __name__ == "__main__":
 				dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), prefixoutput))
 
 		else:
-			dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), suffix))
+			dest.write('%s%s%s\n' % (prefix, line.rstrip('\n').strip(), suffix))
 
 	src.close()
 	dest.close()
