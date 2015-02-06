@@ -133,6 +133,7 @@ if __name__ == "__main__":
 				
 				dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), prefixoutput))
 
+			dest.write('echo enter | hid-keyboard /dev/hidg0 keyboard \n') # Press enter after every string
 		else:
 			dest.write('%s%s%s\n' % (prefix, line.rstrip('\n').strip(), suffix))
 
