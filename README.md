@@ -31,7 +31,8 @@ Apple command key with space will load spotlight
 
 Windows + R key for run
 
-```STRING echo "I love ducky"
+```
+STRING echo "I love ducky"
 ```
 
 We pass text we want to type with the STRING command.
@@ -79,5 +80,3 @@ Will move 100 pixels to right.
 ``` MOUSE 0 -50``` 
 
 Will move 50 pixels up.
-
-
