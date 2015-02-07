@@ -37,6 +37,7 @@ if __name__ == "__main__":
 	 r'ALT' : u'left-alt',
 	 r'GUI' : 'left-meta',
 	 r'WINDOWS' : 'left-meta',
+	 r'COMMAND' : 'left-meta',
 	 r'ALT' : 'left-alt',
 	 r'CONTROL' : 'left-ctrl',
 	 r'CTRL' : 'left-ctrl',
@@ -78,6 +79,9 @@ if __name__ == "__main__":
 	 r'BREAK' : 'pause',
 	 r'PAUSE' : 'pause',
 	 r'SCROLLLOCK' : 'scrolllock',
+	 r'MOUSE RIGHTCLICK' : '--b2',
+	 r'MOUSE LEFTCLICK' : '--b1',
+	 r'MOUSE leftCLICK' : '--b1', # Regex is lowering LEFT to left so we need to catch it.
 	 r'DELAY' : 'sleep',
 	 r'DEFAULT_DELAY' : '"sleep', # We need to add this in between each line if it's set. For debugging
 	 r'REPEAT' : '"'}
@@ -86,6 +90,10 @@ if __name__ == "__main__":
 	# For general keyboard commands
 	prefix = "echo "
 	suffix = " | hid-keyboard /dev/hidg0 keyboard"
+
+	# For general mouse commands
+	prefixmouse = "echo "
+	suffixmouse = " | hid-keyboard /dev/hidg1 mouse"
 
 	# Process input text
 	prefixinput = 'echo -ne "'
@@ -114,6 +122,15 @@ if __name__ == "__main__":
 			line = '#' + line.rstrip('\n').strip('REM')
 			dest.write('%s\n' % line.rstrip('\n').strip())
 
+		# Mouse commands
+		elif line.startswith('--b'):
+			dest.write('%s%s%s\n' % (prefixmouse, line.rstrip('\n').strip(), suffixmouse))
+
+		elif line.startswith('MOUSE'):
+			line = line.strip('MOUSE ')
+			dest.write('%s%s%s\n' % (prefixmouse, line.rstrip('\n').strip(), suffixmouse))
+
+		# User input
 		elif line.startswith('STRING'):
 			line = line.strip('STRING ')
 			for char in line:
@@ -132,7 +149,7 @@ if __name__ == "__main__":
 				elif args.layout=="be" : line = dict_be[char]
 				
 				dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), prefixoutput))
-
+				dest.write('sleep 0.1 \n') # Slow things down
 			dest.write('echo enter | hid-keyboard /dev/hidg0 keyboard \n') # Press enter after every string
 		else:
 			dest.write('%s%s%s\n' % (prefix, line.rstrip('\n').strip(), suffix))
