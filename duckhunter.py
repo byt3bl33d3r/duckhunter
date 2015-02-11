@@ -130,7 +130,7 @@ if __name__ == "__main__":
 			line = line.strip('MOUSE ')
 			dest.write('%s%s%s\n' % (prefixmouse, line.rstrip('\n').strip(), suffixmouse))
 
-		# User input
+		# STRING to type and reads \n as ENTER
 		elif line.startswith('STRING'):
 			line = line.strip('STRING ')
 			for char in line:
@@ -148,6 +148,29 @@ if __name__ == "__main__":
 				elif args.layout=="pt" : line = dict_pt[char]
 				elif args.layout=="be" : line = dict_be[char]
 				
+				dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), prefixoutput))
+				
+				dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n') # releases key
+				dest.write('sleep 0.1 \n') # Slow things down
+		
+		# TEXT to type and NOT pass \n as ENTER.  Allows text to stay put.
+		elif line.startswith('TEXT'):
+			line = line.rstrip('\n').strip('TEXT ')
+			for char in line:
+				
+				if args.layout=="us" : line = dict_us[char]
+				elif args.layout=="fr" : line = dict_fr[char]
+				elif args.layout=="de" : line = dict_de[char]
+				elif args.layout=="es" : line = dict_es[char]
+				elif args.layout=="sv" : line = dict_sv[char]
+				elif args.layout=="it" : line = dict_it[char]
+				elif args.layout=="uk" : line = dict_uk[char]
+				elif args.layout=="ru" : line = dict_ru[iso_ru[char]]
+				elif args.layout=="dk" : line = dict_dk[char]
+				elif args.layout=="no" : line = dict_no[char]
+				elif args.layout=="pt" : line = dict_pt[char]
+				elif args.layout=="be" : line = dict_be[char]
+
 				dest.write('%s%s%s\n' % (prefixinput, line.rstrip('\n').strip(), prefixoutput))
 				
 				dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n') # releases key
