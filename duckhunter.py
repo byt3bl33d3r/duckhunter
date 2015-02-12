@@ -130,6 +130,67 @@ if __name__ == "__main__":
 			line = line.strip('MOUSE ')
 			dest.write('%s%s%s\n' % (prefixmouse, line.rstrip('\n').strip(), suffixmouse))
 
+		elif line.startswith('WIN8CMD'):
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x08\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x06\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 0.1 \n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x10\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 0.1 \n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x07\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 0.1 \n')
+			dest.write('echo -ne "\\x10\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x02\\x00\\x00\\x43\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x01\\x00\\x00\\x51\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x01\\x00\\x00\\x51\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x01\\x00\\x00\\x51\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 1\n')
+			dest.write('echo -ne "\\x01\\x00\\x00\\x51\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 2\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x28\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
+			dest.write('sleep 2\n')
+			if (args.layout=="us"):
+				dest.write('echo left-alt y | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="fr"):
+				dest.write('echo left-alt o | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="de"):
+				dest.write('echo left-alt j | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="es"):
+				dest.write('echo left-alt s | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="sv"):
+				dest.write('echo left-alt j | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="it"):
+				dest.write('echo left-alt s | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="uk"):
+				dest.write('echo left-alt y | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="ru"):
+				dest.write('echo left-alt d | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="dk"):
+				dest.write('echo left-alt j | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="no"):
+				dest.write('echo left-alt j | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="pt"):
+				dest.write('echo left-alt s | hid-keyboard /dev/hidg0 keyboard\n')
+			elif (args.layout=="be"):
+				dest.write('echo left-alt o | hid-keyboard /dev/hidg0 keyboard\n')
+			dest.write('sleep 3\n')
+
 		# STRING to type and reads \n as ENTER
 		elif line.startswith('STRING'):
 			line = line.strip('STRING ')
