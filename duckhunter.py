@@ -165,6 +165,7 @@ if __name__ == "__main__":
 			dest.write('echo -ne "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00" > /dev/hidg0\n')
 			dest.write('sleep 1\n')
 			dest.write('echo left-ctrl left-shift return | hid-keyboard /dev/hidg0 keyboard\n')
+			dest.write('sleep 2\n')
 			if (args.layout=="us"):
 				dest.write('echo left-alt y | hid-keyboard /dev/hidg0 keyboard\n')
 			elif (args.layout=="fr"):
