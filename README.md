@@ -31,7 +31,7 @@ Apple command key with space will load spotlight
 
 Windows + R key for run
 
-```WIN7CMD``
+```WIN7CMD```
 
 Load an elevated command line in Windows 7
 
