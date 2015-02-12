@@ -37,7 +37,7 @@ Load an elevated command line in Windows 7
 
 ```WIN8CMD``
 
-Load an elevated command line in Windows 7
+Load an elevated command line in Windows 8
 
 ```
 STRING echo "I love ducky"
@@ -49,7 +49,7 @@ We pass text we want to type with the STRING command. STRING will by default pre
 TEXT echo "I love ducky"
 ```
 
-TEXT is similar to STRING command but instead of pressing ENTER automatically we leave text.  Useful if you want to type something then combine with other commands.
+TEXT is similar to STRING command but instead of pressing ENTER after text is type, we leave text where it is.  Useful if you want to type something then combine with other commands.
 
 Other useful commands:
 
