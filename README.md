@@ -23,7 +23,7 @@ Here is a list of commands that will work with your Duck Hunter input file for c
 
 In miliseconds, 1000 is equal to 1 second
 
-COMMAND SPACE
+```COMMAND SPACE```
 
 Apple command key with space will load spotlight
 
@@ -53,8 +53,7 @@ TEXT is similar to STRING command but instead of pressing ENTER after text is ty
 
 Other useful commands:
 
-```
-ALT
+```ALT
 CONTROL
 CTRL
 DELETE
@@ -74,8 +73,7 @@ DOWN
 LEFT
 RIGHT
 F1-F10
-CAPSLOCK
-```
+CAPSLOCK```
 
 Keys can also be combined into: CTRL ALT DEL
 
