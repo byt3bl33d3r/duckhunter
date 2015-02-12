@@ -8,9 +8,9 @@ Original code and concept by @binkybear
 Quack
 
 ### Running Duck Hunter
-
-```duckhunter.py -l {us} input.txt output.sh```
-
+```
+duckhunter.py -l {us} input.txt output.sh
+```
 Suppourts multiple languages: us, fr, de, es, sv, it, uk, ru, dk, no, pt, be
 
 Output file can be run as a regular shell file on Nethunter devices.
@@ -18,42 +18,39 @@ Output file can be run as a regular shell file on Nethunter devices.
 ### Keyboard Commands
 
 Here is a list of commands that will work with your Duck Hunter input file for conversion:
-
-```DELAY 1000```
-
+```
+DELAY 1000
+```
 In miliseconds, 1000 is equal to 1 second
-
-```COMMAND SPACE```
-
+```
+COMMAND SPACE
+```
 Apple command key with space will load spotlight
-
-```GUI r```
-
+```
+GUI r
+```
 Windows + R key for run
-
-```WIN7CMD```
-
+```
+WIN7CMD
+```
 Load an elevated command line in Windows 7
-
-```WIN8CMD```
-
+```
+WIN8CMD
+```
 Load an elevated command line in Windows 8
-
-
-```STRING echo "I love ducks"```
-
-
+```
+STRING echo "I love ducks"
+```
 We pass text we want to type with the STRING command. STRING will by default press enter at the end of line.
-
-
-```TEXT echo "I love ducky"```
-
-
+```
+TEXT echo "I love ducky"
+```
 TEXT is similar to STRING command but instead of pressing ENTER after text is type, we leave text where it is.  Useful if you want to type something then combine with other commands.
 
 Other useful commands:
 
-```ALT
+```
+ALT
 CONTROL
 CTRL
 DELETE
@@ -73,23 +70,22 @@ DOWN
 LEFT
 RIGHT
 F1-F10
-CAPSLOCK```
+CAPSLOCK
+```
 
 Keys can also be combined into: CTRL ALT DEL
 
 ### Mouse Commands
-
 ```
 MOUSE LEFTCLICK
 MOUSE RIGHTCLICK
 ```
-
 Left click and right click.
-
-```MOUSE 100 0```
-
+```
+MOUSE 100 0
+```
 Will move 100 pixels to right.
-
-```MOUSE 0 -50```
-
+```
+MOUSE 0 -50
+```
 Will move 50 pixels up.
